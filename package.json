@@ -37,13 +37,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://bitbucket.org/endarebvba/react-native-zebra-scanner",
-  "author": "Endare <info@endare.com> (https://github.com/Endare)",
+  "repository": "https://github.com/yeahaa/react-native-zebra-scanner",
+  "author": "Joni",
   "license": "MIT",
   "bugs": {
-    "url": "https://bitbucket.org/endarebvba/react-native-zebra-scanner/issues"
+    "url": "https://github.com/yeahaa/react-native-zebra-scanner/issues"
   },
-  "homepage": "https://bitbucket.org/endarebvba/react-native-zebra-scanner#readme",
+  "homepage": "https://github.com/yeahaa/react-native-zebra-scanner/#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
