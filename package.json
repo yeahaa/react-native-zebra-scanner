@@ -24,7 +24,7 @@
   "scripts": {
     "test": "jest",
     "typescript": "tsc --noEmit",
-    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "lint": "eslint .",
     "prepare": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
@@ -78,6 +78,9 @@
       "<rootDir>/example/node_modules",
       "<rootDir>/lib/"
     ]
+  },
+  "engines": {
+    "node": ">=18"
   },
   "husky": {
     "hooks": {
