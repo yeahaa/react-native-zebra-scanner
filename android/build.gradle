@@ -1,3 +1,4 @@
+
 buildscript {
   // Buildscript is evaluated before everything else so we can't use getExtOrDefault
   def kotlin_version = rootProject.ext.has('kotlinVersion') ? rootProject.ext.get('kotlinVersion') : project.properties['ZebraScanner_kotlinVersion']
@@ -8,13 +9,15 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:7.2.2'
+    classpath"com.android.tools.build:gradle:$gradle"
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    classpath("com.facebook.react:react-native-gradle-plugin")
   }
 }
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: "com.facebook.react"
 
 def getExtOrDefault(name) {
   return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties['ZebraScanner_' + name]
@@ -25,13 +28,15 @@ def getExtOrIntegerDefault(name) {
 }
 
 android {
+//  ndkVersion rootProject.ext.ndkVersion
   compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
   defaultConfig {
-    minSdkVersion 16
+    minSdkVersion 21
     targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
     versionCode 1
     versionName "1.0"
-
+    // We use NDK 23 which has both M1 support and is the side-by-side NDK version from AGP.
+    ndkVersion = "26.1.10909125"
   }
 
   buildTypes {
@@ -121,9 +126,8 @@ repositories {
 def kotlin_version = getExtOrDefault('kotlinVersion')
 
 dependencies {
-     // For < 0.71, this will be from the local maven repo
-   // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
-  // noinspection GradleDynamicVersion
-  implementation 'com.facebook.react:react-native:+'
+  // The version of react-native is set by the React Native Gradle Plugin
+ implementation "com.facebook.react:react-android:+"
+  //implementation "com.facebook.react:react-native-gradle-plugin"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
